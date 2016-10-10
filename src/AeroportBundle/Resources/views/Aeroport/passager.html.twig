@@ -1,0 +1,22 @@
+{% extends 'AeroportBundle::layout.html.twig' %}
+{% block contenu_page %}
+    <ul class="pagination">
+        {% for p in range(1, 2) %}
+            <li {% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('avion',{'page': p}) }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="row">
+    {% for value in passe %}
+        <ul>
+            <div class="col-lg-5 well">
+                <li>Nom de l'avion : <h1>{{ value.getNomAvion() }}</h1></li>
+                <li>L'identifiant de l'avion : {{ avion.idAvion }}</li>
+                <li>Les noms des passagers sont : {% for pas in passager %}{{ avion.pas.id }}{% endfor %}</li> {#Pour afficher tout les passagers qui sont dans l'avion #}%}
+                <li>L'identifiant du vol : {{ avion.idVol }}</li>
+                <li>La capacity de l'avion : {{ avion.capacity }} Passagers.</li>
+            </div>
+        </ul>
+    {% endfor %}
+{% endblock %}
